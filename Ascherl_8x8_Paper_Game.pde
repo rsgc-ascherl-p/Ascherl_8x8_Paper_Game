@@ -2,6 +2,8 @@
 //By Pierre-Christof Ascherl
 
 int player;  //variable to detect who's turn it is 
+float mouseX;  //tracks x position of the mouse
+float mouseY;  //tracks y position of the mouse
 
 void setup() {
 
@@ -55,5 +57,10 @@ void mouseClicked() {
 
     //make it player 1's turn and turn his dot red
     player = 1;
+  }
+  
+  if (mouseX < 200) {
+    
+    ellipse(100, 300, 10, 10);
   }
 }
