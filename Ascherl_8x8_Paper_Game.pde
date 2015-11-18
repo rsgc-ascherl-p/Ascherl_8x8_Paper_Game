@@ -2,6 +2,7 @@
 //By Pierre-Christof Ascherl
 
 int player;  //variable to detect who's turn it is 
+//int selectedLines;  //colour of the selected and non selected lines
 
 void setup() {
 
@@ -32,6 +33,21 @@ void setup() {
   line(0, 200, 1200, 200);
   line(0, 400, 1200, 400);
   line(0, 600, 1200, 600);
+
+  //Click guidelines
+  fill(170);
+  rect(90, 110, 20, 180);
+  rect(90, 310, 20, 180);
+  rect(110, 490, 180, 20);
+  rect(310, 490, 180, 20);
+  rect(490, 310, 20, 180);
+  rect(490, 110, 20, 180);
+  rect(110, 90, 180, 20);
+  rect(310, 90, 180, 20);
+  rect(290, 110, 20, 180);
+  rect(290, 310, 20, 180);
+  rect(310, 290, 180, 20);
+  rect(110, 290, 180, 20);
 }
 
 void draw() {
@@ -66,8 +82,6 @@ void mouseClicked() {
   }
   //if the x value of the mouse is less than a but more than b and the y value of the mouse is greater than c but less than d draw a circle at point (e, f)
 
-
-
   //Row 1
   if (mouseX < 200&& mouseY < 200) {
     ellipse(100, 100, 10, 10);
@@ -97,5 +111,9 @@ void mouseClicked() {
   }
   if (mouseX > 400&& mouseX < 600&& mouseY > 400 && mouseY < 600) {
     ellipse(500, 500, 10, 10);
+  }
+  if (mouseX > 90 && mouseX < 110 && mouseY > 110 && mouseY < 290) {
+    fill(0);
+    rect(90, 110, 20, 180);
   }
 }
