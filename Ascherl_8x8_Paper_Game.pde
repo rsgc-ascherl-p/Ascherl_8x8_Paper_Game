@@ -83,35 +83,35 @@ void mouseClicked() {
   //if the x value of the mouse is less than a but more than b and the y value of the mouse is greater than c but less than d draw a circle at point (e, f)
 
   //Row 1
-  if (mouseX < 200&& mouseY < 200) {
+  if (mouseX < 200 && mouseY < 200) {
     ellipse(100, 100, 10, 10);
   }
-  if (mouseX > 200&& mouseX <400&& mouseY < 200) {
+  if (mouseX > 200 && mouseX <400 && mouseY < 200) {
     ellipse(300, 100, 10, 10);
   }
-  if (mouseX > 400&& mouseX < 600&& mouseY <200) {
+  if (mouseX > 400 && mouseX < 600 && mouseY <200) {
     ellipse(500, 100, 10, 10);
   }
 
   //Row 2
-  if (mouseX < 200&& mouseY > 200&& mouseY < 400) {
+  if (mouseX < 200 && mouseY > 200 && mouseY < 400) {
     ellipse(100, 300, 10, 10);
   }
-  if (mouseX > 200&& mouseX < 400&& mouseY > 200 && mouseY < 400) {
+  if (mouseX > 200 && mouseX < 400 && mouseY > 200 && mouseY < 400) {
     ellipse(300, 300, 10, 10);
   }
-  if (mouseX > 400&& mouseX < 600&& mouseY > 200 && mouseY < 400) {
+  if (mouseX > 400 && mouseX < 600 && mouseY > 200 && mouseY < 400) {
     ellipse(500, 300, 10, 10);
   }
 
   //Row 3
-  if (mouseX < 200&& mouseY > 400&& mouseY < 600) {
+  if (mouseX < 200 && mouseY > 400 && mouseY < 600) {
     ellipse(100, 500, 10, 10);
   }
-  if (mouseX > 200&& mouseX < 400&& mouseY > 400 && mouseY < 600) {
+  if (mouseX > 200 && mouseX < 400 && mouseY > 400 && mouseY < 600) {
     ellipse(300, 500, 10, 10);
   }
-  if (mouseX > 400&& mouseX < 600&& mouseY > 400 && mouseY < 600) {
+  if (mouseX > 400 && mouseX < 600 && mouseY > 400 && mouseY < 600) {
     ellipse(500, 500, 10, 10);
   }
 
