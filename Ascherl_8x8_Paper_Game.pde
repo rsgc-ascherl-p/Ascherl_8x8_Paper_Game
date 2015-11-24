@@ -2,12 +2,16 @@
 //By Pierre-Christof Ascherl
 
 int player;  //variable to detect who's turn it is 
+int scoreP1; //The score value for player 1
+int scoreP2; //The score value for player 2
 //int selectedLines;  //colour of the selected and non selected lines
 
 void setup() {
 
   //setting player to 1 (player one's turn)
-  player = 1; 
+  player = 1;
+  scoreP1 = 0;
+  scoreP2 = 0;
 
   size(1200, 1200);
   //background(255);
@@ -48,6 +52,13 @@ void setup() {
   rect(290, 310, 20, 180);
   rect(310, 290, 180, 20);
   rect(110, 290, 180, 20);
+
+
+  //Text for the scores of both players
+  fill(0);
+  textSize(20);
+  text("Player 1 Points = ", 900, 200);
+  text("Player 2 Points = ", 900, 300);
 }
 
 void draw() {
@@ -67,6 +78,14 @@ void mouseClicked() {
 
     //make it player 2's turn 
     player = 2;
+
+    //Set player 2's dot blue
+    fill(0, 0, 255);
+    ellipse(1100, 300, 10, 10);
+
+    //Reset player 1's dot
+    fill(0, 0, 0);
+    ellipse(1100, 200, 10, 10);
   } else if (player == 2) {
 
     //Set player 2's dot blue
@@ -79,6 +98,14 @@ void mouseClicked() {
 
     //make it player 1's turn and turn his dot red
     player = 1;
+
+    //Set player 1's dot red
+    fill(239, 0, 38);
+    ellipse(1100, 200, 10, 10);
+
+    //Reset player 2 dot
+    fill(0, 0, 0);
+    ellipse(1100, 300, 10, 10);
   }
   //if the x value of the mouse is less than a but more than b and the y value of the mouse is greater than c but less than d draw a circle at point (e, f)
 
