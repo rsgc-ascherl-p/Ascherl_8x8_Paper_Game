@@ -4,11 +4,10 @@
 int player;  //variable to detect who's turn it is 
 int scoreP1; //The score value for player 1
 int scoreP2; //The score value for player 2
-//int selectedLines;  //colour of the selected and non selected lines
 
 void setup() {
 
-  //setting player to 1 (player one's turn)
+  //setting player value to 1 (player one's turn) and each players score to 0
   player = 1;
   scoreP1 = 0;
   scoreP2 = 0;
@@ -28,12 +27,12 @@ void setup() {
   //fill(0);
   //ellipse(100, 100, 10, 10);
 
-  //Divisor lines (Vertical)
+  //Grid lines (Vertical)
   line(200, 0, 200, 1200);
   line(400, 0, 400, 1200);
   line(600, 0, 600, 1200);
 
-  //Divisor lines (Horizontal)
+  //Grid lines (Horizontal)
   line(0, 200, 1200, 200);
   line(0, 400, 1200, 400);
   line(0, 600, 1200, 600);
