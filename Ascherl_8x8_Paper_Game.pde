@@ -13,7 +13,7 @@ void setup() {
   scoreP2 = 0;
 
   size(1200, 1200);
-  //background(255);
+  //background(255); 
 
   //Create Player 1 turn dot
   fill(239, 0, 38);
@@ -64,6 +64,39 @@ void draw() {
 }
 
 void mouseClicked() {
+  
+  // Trace where the player has clicked
+  println("Raw mouseX: " + mouseX);
+  println("Raw mouseY: " + mouseY);
+  int tX = mouseX - 90;
+  int tY = mouseY - 90;
+  println("Translated mouseX: " + tX);
+  println("Translated mouseY: " + tY);
+  
+  int xR = tX % 200; //This is the X remainder
+  int tC = tX / 200; //Traversed column if 1, 1 dot column and 1 fill column is traversed
+  
+  int yR = tY % 200; //This is the Y remainder
+  int tR = tY / 200; //Traversed row if 1, 1 dot row and 1 fill column is traversed
+  
+  println("xR : " + xR);
+  println("tC : " + tC);
+  
+  println("yR : " + yR);
+  println("tR : " + tR);
+  
+  //Check where the last click was a determine if it was a good click or a bad click
+  if (xR < 20 && yR > 20) {
+  //Good click in dot column 1 between rows 1 and 2 
+  }
+  else if (xR > 20 && yR < 20) {
+    //good click in dot row 1 and between column 1 and 2
+  }
+  else {
+  //bad click  
+  }
+  
+  
   //If it is player 1's turn, turn player 2's dot black
   if (player == 1) { 
 
