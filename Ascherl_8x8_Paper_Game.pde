@@ -1,9 +1,11 @@
-//8x8 Square Paper Game
+//4x4 Square Paper Game
 //By Pierre-Christof Ascherl
 
 int player;  //variable to detect who's turn it is 
 int scoreP1; //The score value for player 1
 int scoreP2; //The score value for player 2
+int[][] dots = new int[3][3];
+int[][] boxes = new int[2][2];
 
 void setup() {
 
@@ -23,19 +25,24 @@ void setup() {
   fill(0);
   ellipse(1100, 300, 10, 10);
 
-  //dot one on grid
-  //fill(0);
-  //ellipse(100, 100, 10, 10);
-
-  //Grid lines (Vertical)
-  line(200, 0, 200, 1200);
-  line(400, 0, 400, 1200);
-  line(600, 0, 600, 1200);
-
-  //Grid lines (Horizontal)
-  line(0, 200, 1200, 200);
-  line(0, 400, 1200, 400);
-  line(0, 600, 1200, 600);
+  //dots on 4x4 grid
+  fill(0);
+  ellipse(100, 100, 10, 10);
+  ellipse(300, 100, 10, 10);
+  ellipse(500, 100, 10, 10);
+  ellipse(700, 100, 10, 10);
+  ellipse(100, 300, 10, 10);
+  ellipse(100, 500, 10, 10);
+  ellipse(100, 700, 10, 10);
+  ellipse(300, 300, 10, 10);
+  ellipse(300, 500, 10, 10);
+  ellipse(300, 700, 10, 10);
+  ellipse(500, 300, 10, 10);
+  ellipse(500, 500, 10, 10);
+  ellipse(500, 700, 10, 10);
+  ellipse(700, 300, 10, 10);
+  ellipse(700, 500, 10, 10);
+  ellipse(700, 700, 10, 10);
 
   //Click guidelines
   fill(170);
@@ -51,13 +58,35 @@ void setup() {
   rect(290, 310, 20, 180);
   rect(310, 290, 180, 20);
   rect(110, 290, 180, 20);
-
-
+  rect(90, 510, 20, 180);
+  rect(290, 510, 20, 180);
+  rect(490, 510, 20, 180);
+  rect(690, 110, 20, 180);
+  rect(690, 310, 20, 180);
+  rect(690, 510, 20, 180);
+  rect(510, 90, 180, 20);
+  rect(510, 290, 180, 20);
+  rect(510, 490, 180, 20);
+  rect(110, 690, 180, 20);
+  rect(310, 690, 180, 20);
+  rect(510, 690, 180, 20);
+  
   //Text for the scores of both players
   fill(0);
   textSize(20);
   text("Player 1 Points = ", 900, 200);
   text("Player 2 Points = ", 900, 300);
+  
+  //Presetting dot values to 0 using arrays
+  dots[0][0] = 0;
+  dots[1][0] = 0;
+  dots[2][0] = 0;
+  dots[0][1] = 0;
+  dots[0][2] = 0;
+  dots[1][1] = 0;
+  dots[2][1] = 0;
+  dots[1][2] = 0;
+  dots[2][2] = 0; 
 }
 
 void draw() {
@@ -107,42 +136,7 @@ void mouseClicked() {
     fill(0, 0, 0);
     ellipse(1100, 300, 10, 10);
   }
-  //if the x value of the mouse is less than a but more than b and the y value of the mouse is greater than c but less than d draw a circle at point (e, f)
-
-  //Row 1
-  if (mouseX < 200 && mouseY < 200) {
-    ellipse(100, 100, 10, 10);
-  }
-  if (mouseX > 200 && mouseX <400 && mouseY < 200) {
-    ellipse(300, 100, 10, 10);
-  }
-  if (mouseX > 400 && mouseX < 600 && mouseY <200) {
-    ellipse(500, 100, 10, 10);
-  }
-
-  //Row 2
-  if (mouseX < 200 && mouseY > 200 && mouseY < 400) {
-    ellipse(100, 300, 10, 10);
-  }
-  if (mouseX > 200 && mouseX < 400 && mouseY > 200 && mouseY < 400) {
-    ellipse(300, 300, 10, 10);
-  }
-  if (mouseX > 400 && mouseX < 600 && mouseY > 200 && mouseY < 400) {
-    ellipse(500, 300, 10, 10);
-  }
-
-  //Row 3
-  if (mouseX < 200 && mouseY > 400 && mouseY < 600) {
-    ellipse(100, 500, 10, 10);
-  }
-  if (mouseX > 200 && mouseX < 400 && mouseY > 400 && mouseY < 600) {
-    ellipse(300, 500, 10, 10);
-  }
-  if (mouseX > 400 && mouseX < 600 && mouseY > 400 && mouseY < 600) {
-    ellipse(500, 500, 10, 10);
-  }
-  
-    // Trace where the player has clicked
+     // Trace where the player has clicked
   println("Raw mouseX: " + mouseX);
   println("Raw mouseY: " + mouseY);
   int tX = mouseX - 90;
@@ -176,4 +170,5 @@ void mouseClicked() {
   } else {
     //bad click
   }
+  
 }
