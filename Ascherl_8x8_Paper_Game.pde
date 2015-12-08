@@ -64,39 +64,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  
-  // Trace where the player has clicked
-  println("Raw mouseX: " + mouseX);
-  println("Raw mouseY: " + mouseY);
-  int tX = mouseX - 90;
-  int tY = mouseY - 90;
-  println("Translated mouseX: " + tX);
-  println("Translated mouseY: " + tY);
-  
-  int xR = tX % 200; //This is the X remainder
-  int tC = tX / 200; //Traversed column if 1, 1 dot column and 1 fill column is traversed
-  
-  int yR = tY % 200; //This is the Y remainder
-  int tR = tY / 200; //Traversed row if 1, 1 dot row and 1 fill column is traversed
-  
-  println("xR : " + xR);
-  println("tC : " + tC);
-  
-  println("yR : " + yR);
-  println("tR : " + tR);
-  
-  //Check where the last click was a determine if it was a good click or a bad click
-  if (xR < 20 && yR > 20) {
-  //Good click in dot column 1 between rows 1 and 2 
-  }
-  else if (xR > 20 && yR < 20) {
-    //good click in dot row 1 and between column 1 and 2
-  }
-  else {
-  //bad click  
-  }
-  
-  
+
   //If it is player 1's turn, turn player 2's dot black
   if (player == 1) { 
 
@@ -173,54 +141,39 @@ void mouseClicked() {
   if (mouseX > 400 && mouseX < 600 && mouseY > 400 && mouseY < 600) {
     ellipse(500, 500, 10, 10);
   }
+  
+    // Trace where the player has clicked
+  println("Raw mouseX: " + mouseX);
+  println("Raw mouseY: " + mouseY);
+  int tX = mouseX - 90;
+  int tY = mouseY - 90;
+  println("Translated mouseX: " + tX);
+  println("Translated mouseY: " + tY);
 
-  //Check if lines are clicked; if they are turn the line black
-  if (mouseX > 90 && mouseX < 110 && mouseY > 110 && mouseY < 290) {
+  int xR = tX % 200; //This is the X remainder
+  int tC = tX / 200; //Traversed column if 1, 1 dot column and 1 fill column is traversed
+
+  int yR = tY % 200; //This is the Y remainder
+  int tR = tY / 200; //Traversed row if 1, 1 dot row and 1 fill column is traversed
+
+  println("xR : " + xR);
+  println("tC : " + tC);
+
+  println("yR : " + yR);
+  println("tR : " + tR);
+
+  //Check where the last click was a determine if it was a good click or a bad click
+  if (xR < 20 && yR > 20) {
+    //Good click in dot column 1 between rows 1 and 2 
+    println("good click on a vertical bar");
     fill(0);
-    rect(90, 110, 20, 180);
-  }
-  if (mouseX > 90 && mouseX < 110 && mouseY > 310 && mouseY < 490) {
+    rect(tC*200 + 90, tR*200 + 110, 20, 180);
+  } else if (xR > 20 && yR < 20) {
+    //good click in dot row 1 and between column 1 and 2
+    println("good click on a horizontal bar");
     fill(0);
-    rect(90, 310, 20, 180);
-  }
-  if (mouseX > 110 && mouseX < 310 && mouseY > 490 && mouseY < 510) {
-    fill(0);
-    rect(110, 490, 180, 20);
-  }
-  if (mouseX > 310 && mouseX < 490 && mouseY > 490 && mouseY < 510) { 
-    fill(0);
-    rect(310, 490, 180, 20);
-  }
-  if (mouseX > 490 && mouseX < 510 && mouseY > 310 && mouseY < 490) {
-    fill(0);
-    rect(490, 310, 20, 180);
-  }
-  if (mouseX > 490 && mouseX < 510 && mouseY > 110 && mouseY < 290) {
-    fill(0);
-    rect(490, 110, 20, 180);
-  }
-  if (mouseX > 310 && mouseX < 490 && mouseY > 90 && mouseY < 110) {
-    fill(0);
-    rect(310, 90, 180, 20);
-  }
-  if (mouseX > 110 && mouseX < 290 && mouseY > 90 && mouseY < 110) {
-    fill(0);
-    rect(110, 90, 180, 20);
-  }
-  if (mouseX > 290 && mouseX < 310 && mouseY > 110 && mouseY < 290) {
-    fill(0);
-    rect(290, 110, 20, 180);
-  }
-  if (mouseX > 290 && mouseX < 310 && mouseY > 310 && mouseY < 490) {
-    fill(0);
-    rect(290, 310, 20, 180);
-  }
-  if (mouseX > 310 && mouseX < 490 && mouseY > 290 && mouseY < 310) {
-    fill(0);
-    rect(310, 290, 180, 20);
-  }
-  if (mouseX > 110 && mouseX < 290 && mouseY > 290 && mouseY < 310) {
-    fill(0);
-    rect(110, 290, 180, 20);
+    rect(tC*200 + 110, tR*200 + 90, 180, 20);
+  } else {
+    //bad click
   }
 }
