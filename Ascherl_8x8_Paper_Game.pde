@@ -1,11 +1,14 @@
-//4x4 Square Paper Game
+//4x4 Square Paper Game //<>// //<>// //<>//
 //By Pierre-Christof Ascherl
 
 int player;  //variable to detect who's turn it is 
 int scoreP1; //The score value for player 1
 int scoreP2; //The score value for player 2
-int[][] dots = new int[3][3];
-int[][] boxes = new int[2][2];
+color CPC;  //Variable for colour
+color p1;  //Red colour for player 1
+color p2;  //Blue colour for player 2
+int[][] dots = new int[5][5];
+boolean[][] boxes = new boolean[3][3];
 
 void setup() {
 
@@ -13,9 +16,12 @@ void setup() {
   player = 1;
   scoreP1 = 0;
   scoreP2 = 0;
+  
+  //set up colours
+  p1 = color(255, 0, 0);
+  p2 = color(0, 0, 255);
 
   size(1200, 1200);
-  //background(255); 
 
   //Create Player 1 turn dot
   fill(239, 0, 38);
@@ -70,13 +76,13 @@ void setup() {
   rect(110, 690, 180, 20);
   rect(310, 690, 180, 20);
   rect(510, 690, 180, 20);
-  
+
   //Text for the scores of both players
   fill(0);
   textSize(20);
   text("Player 1 Points = ", 900, 200);
   text("Player 2 Points = ", 900, 300);
-  
+
   //Presetting dot values to 0 using arrays
   dots[0][0] = 0;
   dots[1][0] = 0;
@@ -86,10 +92,18 @@ void setup() {
   dots[1][1] = 0;
   dots[2][1] = 0;
   dots[1][2] = 0;
-  dots[2][2] = 0; 
+  dots[2][2] = 0;
 }
 
 void draw() {
+
+  if (player == 1) {
+    CPC = p1;
+    player = 1;
+  } else if (player == 2) {
+    CPC = p2 ;
+    player = 2;
+  }
 }
 
 void mouseClicked() {
@@ -136,7 +150,7 @@ void mouseClicked() {
     fill(0, 0, 0);
     ellipse(1100, 300, 10, 10);
   }
-     // Trace where the player has clicked
+  // Trace where the player has clicked
   println("Raw mouseX: " + mouseX);
   println("Raw mouseY: " + mouseY);
   int tX = mouseX - 90;
@@ -160,15 +174,81 @@ void mouseClicked() {
   if (xR < 20 && yR > 20) {
     //Good click in dot column 1 between rows 1 and 2 
     println("good click on a vertical bar");
+    println("add 1 point value to row " + (tR + 1) + " and column " + tC + " and row " + tR + " and column " + tC + " of dots array"); 
+
+    dots[tR][tC] += 1;  //Dot above the line clicked
+    if (dots[tR][tC] > 2) {
+      dots[tR][tC] = 2;
+    }    
+
+    dots[tR + 1][tC] += 1;  //Dot below the line clicked
+    if (dots[tR + 1][tC] > 2) {
+      dots[tR + 1][tC] = 2;
+    }
+
+    if (dots[tR][tC + 1] > 2) {
+      dots[tR][tC + 1] = 2;
+    }
+
     fill(0);
     rect(tC*200 + 90, tR*200 + 110, 20, 180);
+    println("filled a vertical bar");
+
+    // Check to see if square has been made
+    if (tC < 4 && tC > 0 && dots[tR][tC] == 2 && dots[tR+1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
+      //boxes[tR][tC + 1] = true;
+      fill(CPC);
+      rect(tR*100 + 40, tC*100 + 35, 180, 180);
+    }
+
+    if (tC < 4 && tC > 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC - 1] == 2 && dots[tR][tC - 1] == 2) {
+      fill(CPC);
+      rect(tR*100 + 40, tC*100 + 40, 180, 180);
+    }
+
+    if (tC == 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
+      fill(CPC);
+      rect(tR*180 + 20, tC*180 - 110, 180, 180);
+    }
+
+    if (tC == 4 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC - 1] == 2 && dots[tR][tC - 1] == 2) {
+      fill(CPC);
+      rect(tR*180 + 20, tC*180 - 110, 180, 180);
+    }
   } else if (xR > 20 && yR < 20) {
-    //good click in dot row 1 and between column 1 and 2
     println("good click on a horizontal bar");
+    println("add 1 point value to row " + tR + " and column " + tC + " and row " + tR + " and column " + (tC + 1) + " of dots array"); 
+
+    dots[tR][tC] += 1;  //Dot to the left the line clicked
+    if (dots[tR][tC] > 2) {
+      dots[tR][tC] = 2;
+    }    
+    dots[tR][tC + 1] += 1;  //Dot to the right the line clicked
+    if (dots[tR][tC + 1] > 2) {
+      dots[tR][tC + 1] = 2;
+    }
+
+    if (dots[tR + 1][tC] > 2) {
+      dots[tR + 1][tC] = 2;
+    }
+
+    if (tR < 4 && tR > 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC - 1] == 2 && dots[tR][tC - 1] == 2) {
+      fill(CPC);
+      rect(tR*180 + 20, tC*180 + 20, 180, 180);
+    }
+
+    if (tR == 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
+      fill(CPC);
+      rect(tR*180 + 20, tC*180 + 20, 180, 180);
+    }
+    if (tR == 4 && dots[tR][tC] == 2 && dots[tR - 1][tC] == 2 && dots[tR - 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
+      fill(CPC);
+      rect(tR*100 + 20, tC*100 + 120, 180, 180);
+    }
     fill(0);
     rect(tC*200 + 110, tR*200 + 90, 180, 20);
+    println("filled a horizontal bar");
   } else {
-    //bad click
+    println("bad click");
   }
-  
 }
