@@ -16,7 +16,7 @@ void setup() {
   player = 1;
   scoreP1 = 0;
   scoreP2 = 0;
-  
+
   //set up colours
   p1 = color(255, 0, 0);
   p2 = color(0, 0, 255);
@@ -198,22 +198,22 @@ void mouseClicked() {
     if (tC < 4 && tC > 0 && dots[tR][tC] == 2 && dots[tR+1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
       //boxes[tR][tC + 1] = true;
       fill(CPC);
-      rect(tR*100 + 40, tC*100 + 35, 180, 180);
+      rect(110 + (tC + 1)*200, 110 + tR*200, 180, 180);
     }
 
     if (tC < 4 && tC > 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC - 1] == 2 && dots[tR][tC - 1] == 2) {
       fill(CPC);
-      rect(tR*100 + 40, tC*100 + 40, 180, 180);
+      rect(110 + (tC - 1)*200, 110 + tR*200, 180, 180);
     }
 
     if (tC == 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
       fill(CPC);
-      rect(tR*180 + 20, tC*180 - 110, 180, 180);
+      rect(110 + tC*200, 110 + tR*200, 180, 180);
     }
 
     if (tC == 4 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC - 1] == 2 && dots[tR][tC - 1] == 2) {
       fill(CPC);
-      rect(tR*180 + 20, tC*180 - 110, 180, 180);
+      rect(110 + (tC + 1)*200, 110 + tR*200, 180, 180);
     }
   } else if (xR > 20 && yR < 20) {
     println("good click on a horizontal bar");
@@ -232,18 +232,24 @@ void mouseClicked() {
       dots[tR + 1][tC] = 2;
     }
 
-    if (tR < 4 && tR > 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC - 1] == 2 && dots[tR][tC - 1] == 2) {
+    if (tR < 4 && tR > 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
       fill(CPC);
-      rect(tR*180 + 20, tC*180 + 20, 180, 180);
+      rect(110 + tC*200, 110 + tR*200, 180, 180);
+    }
+
+    if (tR < 4 && tR > 0 && dots[tR][tC] == 2 && dots[tR - 1][tC] == 2 && dots[tR - 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
+
+      fill(CPC);
+      rect(110 + tC*200, 110 + (tR - 1)*200, 180, 180);
     }
 
     if (tR == 0 && dots[tR][tC] == 2 && dots[tR + 1][tC] == 2 && dots[tR + 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
       fill(CPC);
-      rect(tR*180 + 20, tC*180 + 20, 180, 180);
+      rect(110 + tC*200, 110 + tR*200, 180, 180);
     }
     if (tR == 4 && dots[tR][tC] == 2 && dots[tR - 1][tC] == 2 && dots[tR - 1][tC + 1] == 2 && dots[tR][tC + 1] == 2) {
       fill(CPC);
-      rect(tR*100 + 20, tC*100 + 120, 180, 180);
+      rect(110 + tC*200, 110 + tR*200, 180, 180);
     }
     fill(0);
     rect(tC*200 + 110, tR*200 + 90, 180, 20);
